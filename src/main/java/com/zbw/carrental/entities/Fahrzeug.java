@@ -1,20 +1,32 @@
 package com.zbw.carrental.entities;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name= "vehicle")
 public class Fahrzeug {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int fahrzeugID;
+
+    @Column(name = "brand", length = 50)
     private String marke;
+
+    @Column(name = "model", length = 50)
     private String model;
-    private IFahrzeugklasse fahrzeugklasse;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Fahrzeugklasse fahrzeugklasse;
+
     private BigDecimal tagesgebuehr;
 
     public Fahrzeug(){
         super();
     }
 
-    public Fahrzeug(int fahrzeugID, String marke, String model, IFahrzeugklasse fahrzeugklasse, BigDecimal tagesgebuehr) {
+    public Fahrzeug(int fahrzeugID, String marke, String model, Fahrzeugklasse fahrzeugklasse, BigDecimal tagesgebuehr) {
         this.fahrzeugID = fahrzeugID;
         this.marke = marke;
         this.model = model;
@@ -46,11 +58,11 @@ public class Fahrzeug {
         this.model = model;
     }
 
-    public IFahrzeugklasse getFahrzeugklasse() {
+    public Fahrzeugklasse getFahrzeugklasse() {
         return fahrzeugklasse;
     }
 
-    public void setFahrzeugklasse(IFahrzeugklasse fahrzeugklasse) {
+    public void setFahrzeugklasse(Fahrzeugklasse fahrzeugklasse) {
         this.fahrzeugklasse = fahrzeugklasse;
     }
 
