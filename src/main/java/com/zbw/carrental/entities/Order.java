@@ -1,39 +1,67 @@
 package com.zbw.carrental.entities;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+@Entity(name = "caroder")
 public class Order {
 
-    private int orderID;
-    private Fahrzeug fahrzeug;
-    private Kunde kunde;
+    // ======================================
+    // =             Attributes             =
+    // ======================================
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @OneToOne
+    @JoinColumn
+    private Vehicle fahrzeug;
+
+    @OneToOne
+    @JoinColumn
+    private Customer customer;
+
+    @Column
     private Timestamp pickUpDate;
+
+    @Column
     private Timestamp dropOfDate;
+
+    @Column(precision = 7, scale = 2)
     private BigDecimal rentCost;
+
+    // ======================================
+    // =            Constructors            =
+    // ======================================
 
     public Order(){
         super();
     }
 
-    public Order(Fahrzeug fahrzeug, Kunde kunde) {
+    public Order(Vehicle fahrzeug, Customer customer) {
         setFahrzeug(fahrzeug);
-        setKunde(kunde);
+        setCustomer(customer);
     }
 
+    // ======================================
+    // =          Getters & Setters         =
+    // ======================================
+
     public int getOrderID() {
-        return orderID;
+        return id;
     }
 
     public void setOrderID(int orderID) {
-        this.orderID = orderID;
+        this.id = orderID;
     }
 
-    public Fahrzeug getFahrzeug() {
+    public Vehicle getFahrzeug() {
         return fahrzeug;
     }
 
-    public void setFahrzeug(Fahrzeug fahrzeug)
+    public void setFahrzeug(Vehicle fahrzeug)
     {
         if ( fahrzeug == null )
         {
@@ -45,18 +73,18 @@ public class Order {
         }
     }
 
-    public Kunde getKunde() {
-        return kunde;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setKunde(Kunde kunde) {
-        if ( kunde == null )
+    public void setCustomer(Customer customer) {
+        if ( customer == null )
         {
-            throw new IllegalArgumentException("Kunde can't be null");
+            throw new IllegalArgumentException("Customer can't be null");
         }
         else
         {
-            this.kunde = kunde;
+            this.customer = customer;
         }
     }
 
