@@ -1,4 +1,4 @@
-package com.zbw.carrental.Main;
+package com.zbw.carrental.main;
 
 import com.zbw.carrental.businesslogic.CustomerService;
 import com.zbw.carrental.entities.Customer;

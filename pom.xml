@@ -1,20 +1,48 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <groupId>com.zbw.carrental</groupId>
     <artifactId>carrental</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>carrental</name>
-    <url>http://maven.apache.org</url>
+
+    <developers>
+        <developer>
+            <organization>zbw</organization>
+            <name>Livio Amstutz</name>
+            <email>livio.a@gmail.com</email>
+        </developer>
+
+        <developer>
+            <organization>zbw</organization>
+            <name>Adnan Rastoder</name>
+            <email>rastoder.adnan@outlook.com</email>
+        </developer>
+    </developers>
+
+    <url>https://github.com/adnan-rasto/carrental</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
 
         <!-- JPA Provider: EclipseLink JPA -->
         <dependency>
@@ -23,12 +51,16 @@
             <version>2.7.0</version>
         </dependency>
 
+        <!-- ========================== TEST Abhängigkeiten =============== -->
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- /========================= TEST Abhängigkeiten =============== -->
 
         <dependency>
             <groupId>mysql</groupId>
