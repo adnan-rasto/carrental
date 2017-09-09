@@ -1,0 +1,15 @@
+*.class
+
+.DS_Store
+.idea/dataSources.local.xml
+.idea/dataSources/
+.idea/inspectionProfiles/
+.idea/workspace.xml
+src/.DS_Store
+src/main/.DS_Store
+target/
+
+# Package Files #
+*.jar
+*.war
+*.ear
