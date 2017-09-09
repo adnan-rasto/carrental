@@ -1,9 +1,12 @@
 package com.zbw.carrental.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 @Entity
-public class Customer {
+@XmlRootElement
+public class Customer implements Serializable {
 
     @Id
     @GeneratedValue
@@ -89,15 +92,43 @@ public class Customer {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Customer customer = (Customer) o;
+
+        if (id != customer.id) return false;
+        if (zipcode != customer.zipcode) return false;
+        if (order != null ? !order.equals(customer.order) : customer.order != null) return false;
+        if (firstname != null ? !firstname.equals(customer.firstname) : customer.firstname != null) return false;
+        if (lastname != null ? !lastname.equals(customer.lastname) : customer.lastname != null) return false;
+        if (address != null ? !address.equals(customer.address) : customer.address != null) return false;
+        return city != null ? city.equals(customer.city) : customer.city == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (order != null ? order.hashCode() : 0);
+        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + zipcode;
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
-        final StringBuilder stringBuilder = new StringBuilder("Customer{");
-        stringBuilder.append("id=").append(id);
-        stringBuilder.append(", firstname=").append(firstname).append('\'');
-        stringBuilder.append(", lastname=").append(lastname).append('\'');
-        stringBuilder.append(", address=").append(address).append('\'');
-        stringBuilder.append(", zipcode=").append(zipcode).append('\'');
-        stringBuilder.append(", city=").append(city);
-        stringBuilder.append('}');
-        return stringBuilder.toString();
+        return "Customer{" +
+                "id=" + id +
+                ", order=" + order +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", address='" + address + '\'' +
+                ", zipcode=" + zipcode +
+                ", city='" + city + '\'' +
+                '}';
     }
 }
