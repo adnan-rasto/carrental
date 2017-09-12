@@ -8,6 +8,10 @@ import java.io.Serializable;
 @XmlRootElement
 public class Customer implements Serializable {
 
+    // ======================================
+    // =             Attributes             =
+    // ======================================
+    
     @Id
     @GeneratedValue
     private int id;
@@ -30,6 +34,10 @@ public class Customer implements Serializable {
 
     @Column
     private String city;
+    
+    // ======================================
+    // =            Constructors            =
+    // ======================================
 
     public Customer() {
         super();
@@ -42,6 +50,10 @@ public class Customer implements Serializable {
         this.zipcode = zipcode;
         this.city = city;
     }
+    
+    // ======================================
+    // =          Getters & Setters         =
+    // ======================================
 
     public int getId() {
         return id;
