@@ -4,28 +4,37 @@ import com.zbw.carrental.businesslogic.CustomerService;
 import com.zbw.carrental.entities.Customer;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Stateless
 @Path("/customer")
 public class CustomerResource {
 
     @EJB
-    private CustomerService customerService;
+    private CustomerService customerService = new CustomerService();
 
     @GET
+    @Path("/{param}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getMsg(@PathParam("param") String msg) {
+
+        String output = "Jersey say : " + msg;
+
+        return Response.status(200).entity(output).build();
+
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getAllCustomers(){
         Customer customer = customerService.findCustomer(1);
-        // GenericEntity<Customer> customerWrapper = new GenericEntity<Customer>(customer){};
-        return Response.ok(customer).build();
+        return Response.ok().entity(customer).build();
     }
 
     @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response saveCustomer(final Customer customer){
         Customer persistedCustomer = customerService.createCustomer(customer);
         return Response.ok(persistedCustomer).build();

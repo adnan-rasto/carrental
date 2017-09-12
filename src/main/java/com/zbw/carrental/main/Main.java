@@ -5,20 +5,21 @@ import com.zbw.carrental.entities.Customer;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
+        DataGenerator dataGenerator = new DataGenerator();
+        dataGenerator.generateCustomer();
 
         CustomerService customerService = new CustomerService();
 
-        //creates and persists a customer
-        Customer customer = customerService.createCustomer("Hans", "Muster", "Teststrasse 10", 9000,"St. Gallen");
-        Customer customer1 = customerService.createCustomer("Max", "Schirm", "Teststrasse 10", 9000,"St. Gallen");
-        Customer customer2 = customerService.createCustomer("John", "Hertz", "Teststrasse 10", 9000,"St. Gallen");
+        Customer customer = new Customer("Test", "teaete", "dafaf", 22, "dfadf");
+        customerService.createCustomer(customer);
 
+        Thread.sleep(3000);
 
-        System.out.println("Customer persisted: " + customer);
-        System.out.println("Customer persisted: " + customer1);
-        System.out.println("Customer persisted: " + customer2);
+        Customer customerDelete = customerService.findCustomer(1);
 
+        customerService.removeCustomer(customerDelete);
 
     }
 }

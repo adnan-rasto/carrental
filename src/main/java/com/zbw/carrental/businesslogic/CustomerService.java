@@ -30,7 +30,10 @@ public class CustomerService {
     // ======================================
 
     public Customer createCustomer(Customer customer){
+        entityTransaction.begin();
         entityManager.persist(customer);
+        entityTransaction.commit();
+
         return customer;
     }
 
@@ -51,7 +54,9 @@ public class CustomerService {
 
     public void removeCustomer(Customer customer) {
 
+        entityTransaction.begin();
         entityManager.remove(entityManager.merge(customer));
+        entityTransaction.commit();
     }
 
     public Customer findCustomer(int id) {
