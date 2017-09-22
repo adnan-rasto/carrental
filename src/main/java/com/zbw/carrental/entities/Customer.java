@@ -6,6 +6,9 @@ import java.io.Serializable;
 
 @Entity
 @XmlRootElement
+@NamedQueries({
+        @NamedQuery(name = "testquery", query = "SELECT c FROM Customer c WHERE c.firstname < :testName"),
+})
 public class Customer implements Serializable {
 
     // ======================================

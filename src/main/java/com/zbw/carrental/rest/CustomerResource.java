@@ -28,8 +28,15 @@ public class CustomerResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllCustomers(){
-        Customer customer = customerService.findCustomer(1);
-        return Response.ok().entity(customer).build();
+        Customer customer = customerService.findCustomer(2);
+        return Response.status(200).entity(customer).build();
+    }
+
+    @GET
+    @Path("/{param}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCustomerByName(@PathParam("param") String name){
+        return Response.status(200).entity(null).build();
     }
 
     @POST

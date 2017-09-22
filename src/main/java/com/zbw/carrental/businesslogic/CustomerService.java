@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class CustomerService {
 
@@ -61,5 +62,18 @@ public class CustomerService {
 
     public Customer findCustomer(int id) {
         return entityManager.find(Customer.class, id);
+    }
+
+    public void queryCustomers() {
+
+        List customers = entityManager.createNamedQuery("testquery")
+                .setParameter("testName", "Max")
+                .getResultList();
+
+        for (int i = 0; i < customers.size(); i++)
+        {
+            Customer customer = (Customer) customers.get(i);
+            System.out.println(customer.toString());
+        }
     }
 }
