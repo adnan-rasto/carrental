@@ -4,10 +4,12 @@ import com.zbw.carrental.businesslogic.CustomerService;
 import com.zbw.carrental.entities.Customer;
 
 import javax.ejb.EJB;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
+import java.util.List;
 
 @Path("/customer")
 public class CustomerResource {
@@ -23,18 +25,6 @@ public class CustomerResource {
     // =           Public Methods           =
     // ======================================
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response create(Customer entity) {
-        customerService.createCustomer(entity);
-
-        return Response.created(UriBuilder.
-                fromResource(CustomerResource.class).
-                path(String.valueOf(entity.getId())).
-                build()).
-                build();
-    }
-
     @GET
     @Path("/{param}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -47,11 +37,16 @@ public class CustomerResource {
 
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllCustomers(){
-        Customer customer = customerService.findCustomer(2);
-        return Response.status(200).entity(customer).build();
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response create(Customer entity) {
+        customerService.createCustomer(entity);
+
+        return Response.created(UriBuilder.
+                fromResource(CustomerResource.class).
+                path(String.valueOf(entity.getId())).
+                build()).
+                build();
     }
 
     @POST
@@ -62,6 +57,10 @@ public class CustomerResource {
         return Response.ok(persistedCustomer).build();
     }
 
+
+
+
+
     @DELETE
     @Path("/{id:[0-9][0-9]*}")
     public Response deleteById(@PathParam("id") Integer id) {
@@ -70,6 +69,31 @@ public class CustomerResource {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         customerService.removeCustomer(entity);
+        return Response.noContent().build();
+    }
+
+    // http://localhost:8081/rest-server/api/customer/?start=1&max=10
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Customer> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult) {
+
+        TypedQuery<Customer> findAllQuery = customerService.getEntityManager().createQuery("SELECT DISTINCT c FROM Customer c ORDER BY c.id", Customer.class);
+        if (startPosition != null) {
+            findAllQuery.setFirstResult(startPosition);
+        }
+        if (maxResult != null) {
+            findAllQuery.setMaxResults(maxResult);
+        }
+        final List<Customer> results = findAllQuery.getResultList();
+        return results;
+    }
+
+    // Put funktioniert momentan nicht korrekt
+    @PUT
+    @Path("/{id:[0-9][0-9]*}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response update(Customer entity) {
+        customerService.updateCustomer(entity);
         return Response.noContent().build();
     }
 }

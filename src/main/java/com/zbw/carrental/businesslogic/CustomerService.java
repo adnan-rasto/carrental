@@ -30,6 +30,11 @@ public class CustomerService {
     // =           Public Methods           =
     // ======================================
 
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+
     public Customer createCustomer(Customer customer){
         entityTransaction.begin();
         entityManager.persist(customer);
@@ -62,6 +67,10 @@ public class CustomerService {
 
     public Customer findCustomer(int id) {
         return entityManager.find(Customer.class, id);
+    }
+
+    public Customer updateCustomer(Customer customer){
+        return entityManager.merge(customer);
     }
 
     public void queryCustomers() {
