@@ -62,48 +62,44 @@ public class Customer implements Serializable {
         return id;
     }
 
-    public void setId(int kundenID) {
-        this.id = kundenID;
-    }
-
     public String getFirstname() {
         return firstname;
     }
 
-    public void setFirstname(String vorname) {
-        this.firstname = vorname;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(String nachname) {
-        this.lastname = nachname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String adresse) {
-        this.address = adresse;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int postleitzahl) {
-        this.zipcode = postleitzahl;
+    public void setZipcode(int zipcode) {
+        this.zipcode = zipcode;
     }
 
     public String getCity() {
         return city;
     }
 
-    public void setCity(String wohnort) {
-        this.city = wohnort;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     @Override

@@ -7,8 +7,10 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
 
-        // DataGenerator dataGenerator = new DataGenerator();
-        // dataGenerator.generateCustomer();
+        DataGenerator dataGenerator = new DataGenerator();
+        dataGenerator.generateCustomer();
+        dataGenerator.generateCustomer();
+        dataGenerator.generateCustomer();
 
         CustomerService customerService = new CustomerService();
 

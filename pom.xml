@@ -39,7 +39,7 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>${javaee-api.version}</version>
+            <version>7.0</version>
         </dependency>
 
         <dependency>
