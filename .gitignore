@@ -5,9 +5,10 @@
 .idea/dataSources/
 .idea/inspectionProfiles/
 .idea/workspace.xml
+**/carrental/rest
 src/.DS_Store
 src/main/.DS_Store
-src/main/java/com/zbw/carrental/rest
+/rest/*/
 target/
 
 # Package Files #

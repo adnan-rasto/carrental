@@ -1,6 +1,6 @@
 package com.zbw.carrental.businesslogic;
 
-import com.zbw.carrental.entities.Customer;
+import com.zbw.carrental.entities.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class CustomerService {
+public class UserService {
 
     // ======================================
     // =             Attributes             =
@@ -22,7 +22,7 @@ public class CustomerService {
     // =            Constructors            =
     // ======================================
 
-    public CustomerService(){
+    public UserService(){
         super();
     }
 
@@ -34,54 +34,43 @@ public class CustomerService {
         return entityManager;
     }
 
+    // ======================================
+    // =          Getters & Setters         =
+    // ======================================
 
-    public Customer createCustomer(Customer customer){
+    public User createUser(User user){
         entityTransaction.begin();
-        entityManager.persist(customer);
+        entityManager.persist(user);
         entityTransaction.commit();
 
-        return customer;
+        return user;
     }
 
-    public Customer createCustomer(String firstname, String lastname, String address, int zipcode, String city){
-        Customer customer = new Customer();
-        customer.setFirstname(firstname);
-        customer.setLastname(lastname);
-        customer.setAddress(address);
-        customer.setZipcode(zipcode);
-        customer.setCity(city);
-
+    public void removeUser(User user) {
         entityTransaction.begin();
-        entityManager.persist(customer);
-        entityTransaction.commit();
-
-        return customer;
-    }
-
-    public void removeCustomer(Customer customer) {
-        entityTransaction.begin();
-        entityManager.remove(entityManager.merge(customer));
+        entityManager.remove(entityManager.merge(user));
         entityTransaction.commit();
     }
 
-    public Customer findCustomer(int id) {
-        return entityManager.find(Customer.class, id);
+    public User findUser(int id) {
+        return entityManager.find(User.class, id);
     }
 
-    public Customer updateCustomer(Customer customer){
-        return entityManager.merge(customer);
+    public User updateUser(User user){
+        return entityManager.merge(user);
     }
 
-    public void queryCustomers() {
+    public void queryUser() {
 
-        List customers = entityManager.createNamedQuery("testquery")
+        List user = entityManager.createNamedQuery("testquery")
                 .setParameter("testName", "Max")
                 .getResultList();
 
-        for (int i = 0; i < customers.size(); i++)
+        for (int i = 0; i < user.size(); i++)
         {
-            Customer customer = (Customer) customers.get(i);
+            User customer = (User) user.get(i);
             System.out.println(customer.toString());
         }
     }
+
 }
