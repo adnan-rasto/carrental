@@ -34,7 +34,6 @@ public class CustomerResource {
 
         Customer customer = customerService.findCustomer(parsedParameter);
         return Response.status(200).entity(customer).build();
-
     }
 
     @POST
@@ -56,9 +55,6 @@ public class CustomerResource {
         Customer persistedCustomer = customerService.createCustomer(customer);
         return Response.ok(persistedCustomer).build();
     }
-
-
-
 
 
     @DELETE

@@ -15,18 +15,17 @@ public class Vehicle {
     private int id;
 
     @Column(length = 50)
-    private String brand;
+    private java.lang.String brand;
 
     @Column(length = 50)
-    private String model;
+    private java.lang.String model;
 
     @Id
     @OneToOne(mappedBy = "fahrzeug")
     private Order order;
 
-    @OneToOne
-    @JoinColumn
-    private CarClassification carClassification;
+    @Column
+    private String carClassification;
 
     @Column(nullable = false, precision = 7, scale = 2)
     private BigDecimal dailycharge;
@@ -39,8 +38,7 @@ public class Vehicle {
         super();
     }
 
-    public Vehicle(int id, String brand, String model, CarClassification carClassification, BigDecimal dailycharge) {
-        this.id = id;
+    public Vehicle(java.lang.String brand, java.lang.String model, String carClassification, BigDecimal dailycharge) {
         this.brand = brand;
         this.model = model;
         this.carClassification = carClassification;
@@ -59,27 +57,27 @@ public class Vehicle {
         this.id = fahrzeugID;
     }
 
-    public String getBrand() {
+    public java.lang.String getBrand() {
         return brand;
     }
 
-    public void setBrand(String marke) {
+    public void setBrand(java.lang.String marke) {
         this.brand = marke;
     }
 
-    public String getModel() {
+    public java.lang.String getModel() {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel(java.lang.String model) {
         this.model = model;
     }
 
-    public CarClassification getFahrzeugklasse() {
+    public String getFahrzeugklasse() {
         return carClassification;
     }
 
-    public void setFahrzeugklasse(CarClassification fahrzeugklasse) {
+    public void setFahrzeugklasse(String fahrzeugklasse) {
         this.carClassification = fahrzeugklasse;
     }
 

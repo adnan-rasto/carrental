@@ -8,8 +8,8 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>com.zbw.carrental.entities.Customer</class>
         <class>com.zbw.carrental.entities.Vehicle</class>
-        <class>com.zbw.carrental.entities.CarClassification</class>
         <class>com.zbw.carrental.entities.Order</class>
+        <class>com.zbw.carrental.entities.User</class>
         <properties>
 
             <!-- JPA connection information for the database -->

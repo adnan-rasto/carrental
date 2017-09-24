@@ -1,14 +1,16 @@
 package com.zbw.carrental.businesslogic;
 
 import com.zbw.carrental.entities.User;
+import com.zbw.carrental.entities.Vehicle;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.math.BigDecimal;
 import java.util.List;
 
-public class UserService {
+public class VehicleService {
 
     // ======================================
     // =             Attributes             =
@@ -22,7 +24,7 @@ public class UserService {
     // =            Constructors            =
     // ======================================
 
-    public UserService(){
+    public VehicleService(){
         super();
     }
 
@@ -38,38 +40,40 @@ public class UserService {
     // =           Public Methods           =
     // ======================================
 
-    public User createUser(String username, String password){
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
+    public Vehicle CreateVehicle(java.lang.String brand, java.lang.String model, String carClassification, BigDecimal dailycharge){
+        Vehicle vehicle = new Vehicle();
+        vehicle.setBrand(brand);
+        vehicle.setModel(model);
+        vehicle.setFahrzeugklasse(carClassification);
+        vehicle.setDailycharge(dailycharge);
 
         entityTransaction.begin();
-        entityManager.persist(user);
+        entityManager.persist(vehicle);
         entityTransaction.commit();
 
-        return user;
+        return vehicle;
     }
 
-    public User createUser(User user){
+    public Vehicle createVehicle(Vehicle vehicle){
         entityTransaction.begin();
-        entityManager.persist(user);
+        entityManager.persist(vehicle);
         entityTransaction.commit();
 
-        return user;
+        return vehicle;
     }
 
-    public void removeUser(User user) {
+    public void removeVehicle(Vehicle vehicle) {
         entityTransaction.begin();
-        entityManager.remove(entityManager.merge(user));
+        entityManager.remove(entityManager.merge(vehicle));
         entityTransaction.commit();
     }
 
-    public User findUser(int id) {
-        return entityManager.find(User.class, id);
+    public Vehicle findVehicle(int id) {
+        return entityManager.find(Vehicle.class, id);
     }
 
-    public User updateUser(User user){
-        return entityManager.merge(user);
+    public Vehicle updateVehicle(Vehicle vehicle){
+        return entityManager.merge(vehicle);
     }
 
     public void queryUser() {
@@ -84,5 +88,4 @@ public class UserService {
             System.out.println(customer.toString());
         }
     }
-
 }
