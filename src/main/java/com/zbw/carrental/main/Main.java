@@ -4,11 +4,11 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        DataGenerator dataGenerator = new DataGenerator();
-        dataGenerator.generateCustomer();
-        dataGenerator.generateUser();
-        dataGenerator.generateVehicle();
-        dataGenerator.generateOrder();
+        // DataGenerator dataGenerator = new DataGenerator();
+        // dataGenerator.generateCustomer();
+        // dataGenerator.generateUser();
+        // dataGenerator.generateVehicle();
+        // dataGenerator.generateOrder();
         // dataGenerator.generateCustomer();
         // dataGenerator.generateCustomer();
         // dataGenerator.generateCustomer();
@@ -17,5 +17,7 @@ public class Main {
         // Customer customer = new Customer("abcdefg", "teaete", "dafaf", 22, "dfadf");
         // customerService.createCustomer(customer);
 
+
+        DataGenerator dataGenerator = new DataGenerator();
     }
 }

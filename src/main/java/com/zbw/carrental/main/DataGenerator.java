@@ -10,6 +10,7 @@ import com.zbw.carrental.entities.User;
 import com.zbw.carrental.entities.Vehicle;
 
 import java.math.BigDecimal;
+import java.util.logging.Logger;
 
 public class DataGenerator {
 
@@ -17,9 +18,19 @@ public class DataGenerator {
     private UserService userService = new UserService();
     private VehicleService vehicleService = new VehicleService();
     private OrderService orderService = new OrderService();
+    final static Logger logger = Logger.getLogger(String.valueOf(DataGenerator.class));
 
     public DataGenerator(){
         super();
+        logger.info("Entering the constructor of DataGenerator method");
+        logger.warning("Test warning");
+    }
+
+    public void generateData(){
+        generateUser();
+        generateCustomer();
+        generateVehicle();
+        generateOrder();
     }
 
     public void generateCustomer(){

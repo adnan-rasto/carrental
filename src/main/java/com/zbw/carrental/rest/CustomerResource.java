@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Path("/customer")
 public class CustomerResource {
@@ -21,6 +22,8 @@ public class CustomerResource {
     @EJB
     private CustomerService customerService = new CustomerService();
 
+    final static Logger logger = Logger.getLogger(String.valueOf(CustomerResource.class));
+
     // ======================================
     // =           Public Methods           =
     // ======================================
@@ -29,6 +32,7 @@ public class CustomerResource {
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCustomerById(@PathParam("id") Integer customerId) {
+        logger.info("Entering the getCustomerById method");
 
         Customer customer = customerService.
                 findCustomer(customerId);

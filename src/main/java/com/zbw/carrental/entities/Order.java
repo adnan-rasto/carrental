@@ -113,6 +113,44 @@ public class Order {
     public void setRentCost(BigDecimal rentCost) {
         this.rentCost = rentCost;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Order order = (Order) o;
+
+        if (id != order.id) return false;
+        if (fahrzeug != null ? !fahrzeug.equals(order.fahrzeug) : order.fahrzeug != null) return false;
+        if (customer != null ? !customer.equals(order.customer) : order.customer != null) return false;
+        if (pickUpDate != null ? !pickUpDate.equals(order.pickUpDate) : order.pickUpDate != null) return false;
+        if (dropOfDate != null ? !dropOfDate.equals(order.dropOfDate) : order.dropOfDate != null) return false;
+        return rentCost != null ? rentCost.equals(order.rentCost) : order.rentCost == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (fahrzeug != null ? fahrzeug.hashCode() : 0);
+        result = 31 * result + (customer != null ? customer.hashCode() : 0);
+        result = 31 * result + (pickUpDate != null ? pickUpDate.hashCode() : 0);
+        result = 31 * result + (dropOfDate != null ? dropOfDate.hashCode() : 0);
+        result = 31 * result + (rentCost != null ? rentCost.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", fahrzeug=" + fahrzeug +
+                ", customer=" + customer +
+                ", pickUpDate=" + pickUpDate +
+                ", dropOfDate=" + dropOfDate +
+                ", rentCost=" + rentCost +
+                '}';
+    }
 }
 
 

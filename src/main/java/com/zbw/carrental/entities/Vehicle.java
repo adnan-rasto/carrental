@@ -17,10 +17,10 @@ public class Vehicle {
     private int id;
 
     @Column(length = 50)
-    private java.lang.String brand;
+    private String brand;
 
     @Column(length = 50)
-    private java.lang.String model;
+    private String model;
 
     @Id
     @OneToOne(mappedBy = "fahrzeug")
@@ -89,5 +89,17 @@ public class Vehicle {
 
     public void setDailycharge(BigDecimal tagesgebuehr) {
         this.dailycharge = tagesgebuehr;
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", order=" + order +
+                ", carClassification='" + carClassification + '\'' +
+                ", dailycharge=" + dailycharge +
+                '}';
     }
 }
