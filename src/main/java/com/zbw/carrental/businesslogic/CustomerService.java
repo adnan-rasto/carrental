@@ -65,7 +65,8 @@ public class CustomerService {
     }
 
     public Customer findCustomer(int id) {
-        return entityManager.find(Customer.class, id);
+        return entityManager.
+                find(Customer.class, id);
     }
 
     public Customer updateCustomer(Customer customer){

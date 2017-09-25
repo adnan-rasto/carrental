@@ -1,10 +1,12 @@
 package com.zbw.carrental.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-@Entity(name = "caroder")
+@Entity(name = "carorder")
+@XmlRootElement
 public class Order {
 
     // ======================================

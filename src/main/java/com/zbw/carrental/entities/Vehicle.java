@@ -1,9 +1,11 @@
 package com.zbw.carrental.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
 @Entity
+@XmlRootElement
 public class Vehicle {
 
     // ======================================
@@ -38,7 +40,7 @@ public class Vehicle {
         super();
     }
 
-    public Vehicle(java.lang.String brand, java.lang.String model, String carClassification, BigDecimal dailycharge) {
+    public Vehicle(String brand, String model, String carClassification, BigDecimal dailycharge) {
         this.brand = brand;
         this.model = model;
         this.carClassification = carClassification;
@@ -57,19 +59,19 @@ public class Vehicle {
         this.id = fahrzeugID;
     }
 
-    public java.lang.String getBrand() {
+    public String getBrand() {
         return brand;
     }
 
-    public void setBrand(java.lang.String marke) {
+    public void setBrand(String marke) {
         this.brand = marke;
     }
 
-    public java.lang.String getModel() {
+    public String getModel() {
         return model;
     }
 
-    public void setModel(java.lang.String model) {
+    public void setModel(String model) {
         this.model = model;
     }
 

@@ -1,9 +1,11 @@
 package com.zbw.carrental.main;
 
 import com.zbw.carrental.businesslogic.CustomerService;
+import com.zbw.carrental.businesslogic.OrderService;
 import com.zbw.carrental.businesslogic.UserService;
 import com.zbw.carrental.businesslogic.VehicleService;
 import com.zbw.carrental.entities.Customer;
+import com.zbw.carrental.entities.Order;
 import com.zbw.carrental.entities.User;
 import com.zbw.carrental.entities.Vehicle;
 
@@ -14,6 +16,7 @@ public class DataGenerator {
     private CustomerService customerService = new CustomerService();
     private UserService userService = new UserService();
     private VehicleService vehicleService = new VehicleService();
+    private OrderService orderService = new OrderService();
 
     public DataGenerator(){
         super();
@@ -46,5 +49,17 @@ public class DataGenerator {
         Vehicle vehicle = vehicleService.CreateVehicle("VW", "Golf", "Luxus", new BigDecimal(150));
         Vehicle vehicle1 = vehicleService.CreateVehicle("Ferrari", "F-50", "Luxus", new BigDecimal(150));
         Vehicle vehicle2 = vehicleService.CreateVehicle("Ferrari", "F-40", "Luxus", new BigDecimal(150));
+    }
+
+    public void generateOrder(){
+
+        Customer customer = customerService.findCustomer(101);
+        Vehicle vehicle = vehicleService.findVehicle(4);
+
+        Order order = new Order(vehicle, customer);
+
+        orderService.createOrde(order);
+
+
     }
 }
