@@ -13,5 +13,3 @@ target/
 *.jar
 *.war
 *.ear
-.idea/libraries/Maven__log4j_log4j_1_2_17.xml
-src/main/resources/log4j.properties

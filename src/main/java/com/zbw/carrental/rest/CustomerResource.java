@@ -100,7 +100,6 @@ public class CustomerResource {
         return results;
     }
 
-    // Put funktioniert momentan nicht korrekt
     @PUT
     @Path("/{id:[0-9][0-9]*}")
     @Consumes(MediaType.APPLICATION_JSON)
