@@ -32,7 +32,7 @@ public class OrderResource {
     @Path("/{param}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getOrderById(@PathParam("param") String orderId) {
-        logger.info("Entering the getOrderById method of OrderResource class");
+        logger.info("Entering the getOrderById method");
 
         int parsedParameter = Integer.valueOf(orderId);
 
@@ -46,7 +46,7 @@ public class OrderResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(Order order) {
-        logger.info("Entering the create method of OrderResource class");
+        logger.info("Entering the create method");
         orderService.createOrde(order);
 
         return Response.created(UriBuilder.
@@ -59,7 +59,7 @@ public class OrderResource {
     @DELETE
     @Path("/{id:[0-9][0-9]*}")
     public Response deleteById(@PathParam("id") Integer id) {
-        logger.info("Entering the deletedById method of OrderResource class");
+        logger.info("Entering the deletedById method");
         Order entity = orderService.findOrder(id);
         if (entity == null) {
             return Response.
@@ -76,7 +76,7 @@ public class OrderResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Order> listAll() {
-        logger.info("Entering the listAll method of OrderResource class");
+        logger.info("Entering the listAll method");
 
         TypedQuery<Order> findAllQuery = orderService.getEntityManager().
                 createQuery("SELECT o FROM carorder o ORDER BY o.id" , Order.class);
@@ -89,7 +89,7 @@ public class OrderResource {
     @Path("/{id:[0-9][0-9]*}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(Order order) {
-        logger.info("Entering the update method of OrderResource class");
+        logger.info("Entering the update method");
 
         Order searchOrder = orderService.findOrder(order.getOrderID());
         System.out.println(order.getOrderID());

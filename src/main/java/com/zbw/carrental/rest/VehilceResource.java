@@ -32,7 +32,7 @@ public class VehilceResource {
     @Path("/{param}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getVehicleById(@PathParam("param") String userId) {
-        logger.info("Entering the getVehicleById method of VehilceResource class");
+        logger.info("Entering the getVehicleById method");
         int parsedParameter = Integer.valueOf(userId);
 
         Vehicle vehicle = vehicleService.findVehicle(parsedParameter);
@@ -45,7 +45,7 @@ public class VehilceResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(Vehicle vehicle) {
-        logger.info("Entering the create method of VehilceResource class");
+        logger.info("Entering the create method");
         vehicleService.createVehicle(vehicle);
 
         return Response.created(UriBuilder.
@@ -59,7 +59,7 @@ public class VehilceResource {
     @DELETE
     @Path("/{id:[0-9][0-9]*}")
     public Response deleteById(@PathParam("id") Integer id) {
-        logger.info("Entering the deleteById method of VehilceResource class");
+        logger.info("Entering the deleteById method");
         Vehicle vehicle = vehicleService.findVehicle(id);
         if (vehicle == null) {
             return Response.
@@ -75,7 +75,7 @@ public class VehilceResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Vehicle> listAll() {
-        logger.info("Entering the listAll method of VehilceResource class");
+        logger.info("Entering the listAll method");
 
         TypedQuery<Vehicle> findAllQuery =
                 vehicleService.
@@ -91,7 +91,7 @@ public class VehilceResource {
     @Path("/{id:[0-9][0-9]*}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(Vehicle vehicle) {
-        logger.info("Entering the update method of VehilceResource class");
+        logger.info("Entering the update method");
         vehicleService.updateVehicle(vehicle);
 
         return Response.

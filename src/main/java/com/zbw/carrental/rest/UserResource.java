@@ -33,7 +33,7 @@ public class UserResource {
     @Path("/{param}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUserById(@PathParam("param") String userId) {
-        logger.info("Entering the getUserById method of UserResource class");
+        logger.info("Entering the getUserById method");
         int parsedParameter = Integer.valueOf(userId);
 
         User user = userService.findUser(parsedParameter);
@@ -46,7 +46,7 @@ public class UserResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(User user) {
-        logger.info("Entering the create method of UserResource class");
+        logger.info("Entering the create method");
         userService.createUser(user);
 
         return Response.created(UriBuilder.
@@ -59,7 +59,7 @@ public class UserResource {
     @DELETE
     @Path("/{id:[0-9][0-9]*}")
     public Response deleteById(@PathParam("id") Integer id) {
-        logger.info("Entering the deleteById method of UserResource class");
+        logger.info("Entering the deleteById method");
         User entity = userService.findUser(id);
         if (entity == null) {
             return Response.
@@ -76,7 +76,7 @@ public class UserResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> listAll() {
-        logger.info("Entering the listAll method of UserResource class");
+        logger.info("Entering the listAll method");
 
         TypedQuery<User> findAllQuery = userService.getEntityManager().
                 createQuery("SELECT DISTINCT u FROM User u ORDER BY u.userId" , User.class);
@@ -89,7 +89,7 @@ public class UserResource {
     @Path("/{id:[0-9][0-9]*}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(User user) {
-        logger.info("Entering the update method of UserResource class");
+        logger.info("Entering the update method");
         userService.updateUser(user);
 
         return Response.

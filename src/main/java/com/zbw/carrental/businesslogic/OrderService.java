@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.logging.Logger;
 
 public class OrderService {
 
@@ -18,6 +19,8 @@ public class OrderService {
     private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("carrental");
     private EntityManager entityManager = entityManagerFactory.createEntityManager();
     private EntityTransaction entityTransaction = entityManager.getTransaction();
+
+    final static Logger logger = Logger.getLogger(String.valueOf(OrderService.class));
 
     // ======================================
     // =            Constructors            =
@@ -32,10 +35,12 @@ public class OrderService {
     // ======================================
 
     public EntityManager getEntityManager() {
+        logger.info("Entering the method getEntityManager");
         return this.entityManager;
     }
 
     public Order createOrde(Order order){
+        logger.info("Entering the method createOrder");
         entityTransaction.begin();
         entityManager.persist(order);
         entityTransaction.commit();
@@ -44,6 +49,7 @@ public class OrderService {
     }
 
     public Order createOrder(Vehicle fahrzeug, Customer customer){
+        logger.info("Entering the method createOrder");
         Order order = new Order();
         order.setCustomer(customer);
         order.setFahrzeug(fahrzeug);
@@ -56,17 +62,20 @@ public class OrderService {
     }
 
     public void removeOrder(Order order) {
+        logger.info("Entering the method removeOrder");
         entityTransaction.begin();
         entityManager.remove(entityManager.merge(order));
         entityTransaction.commit();
     }
 
     public Order findOrder(int id) {
+        logger.info("Entering the method findOrder");
         return entityManager.
                 find(Order.class, id);
     }
 
     public Order updateOrder(Order order){
+        logger.info("Entering the method updateOrder");
         return entityManager.
                 merge(order);
     }

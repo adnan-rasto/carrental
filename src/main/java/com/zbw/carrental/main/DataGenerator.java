@@ -22,11 +22,11 @@ public class DataGenerator {
 
     public DataGenerator(){
         super();
-        logger.info("Entering the constructor of DataGenerator method");
-        logger.warning("Test warning");
+        logger.info("Entering the constructor of DataGenerator");
     }
 
     public void generateData(){
+        logger.info("Entering the method of generateData");
         generateUser();
         generateCustomer();
         generateVehicle();
@@ -34,6 +34,7 @@ public class DataGenerator {
     }
 
     public void generateCustomer(){
+        logger.info("Entering the method of generateCustomer");
 
         Customer customer = customerService.createCustomer
                 ("Hans", "Muster", "Teststrasse 10", 9000,"St. Gallen");
@@ -50,27 +51,26 @@ public class DataGenerator {
     }
 
     public void generateUser(){
+        logger.info("Entering the method of generateUser");
         User user = userService.createUser("admin", "12345");
         User user1 = userService.createUser("sachbearbeiter1", "11111");
         User user2 = userService.createUser("sachbearbeiter2", "222222");
     }
 
     public void generateVehicle() {
-
-        Vehicle vehicle = vehicleService.CreateVehicle("VW", "Golf", "Luxus", new BigDecimal(150));
-        Vehicle vehicle1 = vehicleService.CreateVehicle("Ferrari", "F-50", "Luxus", new BigDecimal(150));
-        Vehicle vehicle2 = vehicleService.CreateVehicle("Ferrari", "F-40", "Luxus", new BigDecimal(150));
+        logger.info("Entering the method of generateVehicle");
+        Vehicle vehicle = vehicleService.createVehicle("VW", "Golf", "Luxus", new BigDecimal(150));
+        Vehicle vehicle1 = vehicleService.createVehicle("Ferrari", "F-50", "Luxus", new BigDecimal(150));
+        Vehicle vehicle2 = vehicleService.createVehicle("Ferrari", "F-40", "Luxus", new BigDecimal(150));
     }
 
     public void generateOrder(){
-
+        logger.info("Entering the method of generateOrder");
         Customer customer = customerService.findCustomer(101);
         Vehicle vehicle = vehicleService.findVehicle(4);
 
         Order order = new Order(vehicle, customer);
 
         orderService.createOrde(order);
-
-
     }
 }
