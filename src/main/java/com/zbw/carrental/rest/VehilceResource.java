@@ -12,7 +12,7 @@ import javax.ws.rs.core.UriBuilder;
 import java.util.List;
 import java.util.logging.Logger;
 
-@Path("/vehicle")
+@Path("/cars")
 public class VehilceResource {
 
     // ======================================
